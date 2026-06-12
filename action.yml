@@ -39,7 +39,7 @@ runs:
       shell: bash
       run: |
         npm install -g opencode-agent
-        pip install git+https://github.com/joeyism/frankcode.git
+        pip install frankcode
 
     - name: Prepare Prompt
       shell: bash
