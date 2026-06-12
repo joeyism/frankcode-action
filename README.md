@@ -1,6 +1,6 @@
 # FrankCode Action
 
-A GitHub Action that automatically runs [FrankCode](https://github.com/joeyism/frankcode-py) on your repository whenever you leave a comment on an issue. FrankCode will autonomously investigate your codebase, implement a fix, self-verify the code, and submit a Pull Request.
+A GitHub Action that automatically runs [FrankCode](https://github.com/joeyism/frankcode) on your repository whenever you leave a comment on an issue. FrankCode will autonomously investigate your codebase, implement a fix, self-verify the code, and submit a Pull Request.
 
 ## Usage
 
