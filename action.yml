@@ -11,9 +11,9 @@ inputs:
     description: 'API key for the LLM (e.g., GEMINI_API_KEY, OPENAI_API_KEY)'
     required: true
   api-key-name:
-    description: 'Name of the environment variable for the API key (e.g., GEMINI_API_KEY, OPENAI_API_KEY, ANTHROPIC_API_KEY)'
+    description: 'Name of the environment variable for the API key (e.g., GOOGLE_GENERATIVE_AI_API_KEY, OPENAI_API_KEY, ANTHROPIC_API_KEY)'
     required: false
-    default: 'GEMINI_API_KEY'
+    default: 'GOOGLE_GENERATIVE_AI_API_KEY'
   github-token:
     description: 'GitHub Token for creating the PR'
     required: true
