@@ -61,7 +61,7 @@ runs:
       shell: bash
       run: |
         export ${{ inputs.api-key-name }}=${{ inputs.api-key }}
-        frankcode "$(cat frankcode_prompt.txt)" --model "${{ inputs.model }}"
+        frankcode exec "$(cat frankcode_prompt.txt)" --model "${{ inputs.model }}"
 
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v6
