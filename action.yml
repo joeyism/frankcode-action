@@ -8,12 +8,16 @@ branding:
 
 inputs:
   api-key:
-    description: 'API key for the LLM (e.g., GEMINI_API_KEY, OPENAI_API_KEY)'
+    description: 'Primary API key for the LLM (e.g., GEMINI_API_KEY, OPENAI_API_KEY)'
     required: true
   api-key-name:
-    description: 'Name of the environment variable for the API key (e.g., GOOGLE_GENERATIVE_AI_API_KEY, OPENAI_API_KEY, ANTHROPIC_API_KEY)'
+    description: 'Name of the environment variable for the primary API key (e.g., GOOGLE_GENERATIVE_AI_API_KEY, OPENAI_API_KEY)'
     required: false
     default: 'GOOGLE_GENERATIVE_AI_API_KEY'
+  env:
+    description: 'Additional environment variables as a multiline string (e.g., "ANTHROPIC_API_KEY=xxx\nOPENCODE_API_KEY=yyy")'
+    required: false
+    default: ''
   github-token:
     description: 'GitHub Token for creating the PR'
     required: true
@@ -62,6 +66,16 @@ runs:
       run: |
         export NODE_OPTIONS="--dns-result-order=ipv4first"
         export ${{ inputs.api-key-name }}=${{ inputs.api-key }}
+        
+        # Load any additional environment variables provided
+        if [ -n "${{ inputs.env }}" ]; then
+          while IFS= read -r line; do
+            if [ -n "$line" ]; then
+              export "$line"
+            fi
+          done <<< "${{ inputs.env }}"
+        fi
+        
         frankcode exec "$(cat frankcode_prompt.txt)" --model "${{ inputs.model }}"
 
     - name: Upload FrankCode Logs
