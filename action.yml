@@ -60,6 +60,7 @@ runs:
     - name: Run FrankCode
       shell: bash
       run: |
+        export NODE_OPTIONS="--dns-result-order=ipv4first"
         export ${{ inputs.api-key-name }}=${{ inputs.api-key }}
         frankcode exec "$(cat frankcode_prompt.txt)" --model "${{ inputs.model }}"
 
