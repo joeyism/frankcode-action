@@ -78,6 +78,9 @@ runs:
         
         frankcode exec "$(cat frankcode_prompt.txt)" --model "${{ inputs.model }}"
 
+        # Clean up temporary files to avoid committing them
+        rm -f frankcode_prompt.txt .opencode-*
+
     - name: Upload FrankCode Logs
       if: always()
       uses: actions/upload-artifact@v4
